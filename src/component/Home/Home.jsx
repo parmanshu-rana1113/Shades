@@ -1,5 +1,5 @@
 import { ArrowBigLeftDashIcon, ArrowBigRightDashIcon, CircleDot, DotIcon, MessageSquareMoreIcon, StarIcon } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../Card';
 import Card2 from '../Card2';
 
@@ -394,7 +394,10 @@ function Home() {
 
         </video>
 
+        <div className='md:hidden lg:hidden'>
+          <MobileIconContext />
 
+        </div>
         <div className="absolute bottom-20 left-10 text-white z-10">
           <h1 className="text-2xl font-bold mb-2 font-serif">Wall Perfection</h1>
           <h3 className="text-xl font-serif">Shades by Eric Kuster verf collectie</h3>
@@ -405,7 +408,7 @@ function Home() {
             <MessageSquareMoreIcon
               className='h-5 w-5 text-white'
             />
-            <span className='font-serif text-lg text-white'>Contact</span>
+            <span className='hidden md:block font-serif text-lg text-white'>Contact</span>
           </div>
 
         </div>
@@ -457,10 +460,10 @@ function Home() {
       </div>
 
       {/* CARDS  */}
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto p-1 md:p-6 lg:p-6">
         {/* Section with heading, subheading, and button */}
         <div className="flex flex-col md:flex-row justify-between items-center my-8">
-          <div>
+          <div className='px-5 md:px-0 lg:px-0'>
             <h1 className="text-2xl font-bold mb-4 text-black font-serif ">Shades by Eric Kuster</h1>
             <h3 className="text-xl mb-4 text-black font-serif">Ga aan de slag met onze best verkochte kleuren en creëer jouw ultieme woonbeleving</h3>
           </div>
@@ -487,7 +490,7 @@ function Home() {
       </div>
 
       {/* TWO CARD  */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-4 bg-white p-4 rounded-lg px-12">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-4 bg-white p-4 rounded-lg px-5 md:px-12 lg:px-12">
 
         <div className="flex flex-col lg:flex-row items-center gap-4 w-full lg:w-1/2 bg-gray-200 p-4 py-14 rounded-lg h-full">
 
@@ -538,14 +541,34 @@ function Home() {
       </div>
 
       {/* VIDEO WITH IMAGE */}
-      <div className='w-full  bg-[#ebe9e7] px-14 mt-4 hidden md:block'>
+      <div className='w-full  bg-[#ebe9e7] md:px-14 lg:px-14 mt-4'>
         <div className='flex flex-col md:flex-row lg:flex-row'>
-          <div className='w-1/2 rounded-2xl bg-[#ebe9e7] m-8'>
+          <div className=' md:w-1/2 lg:w-1/2 rounded-2xl bg-[#ebe9e7] m-8'>
 
             <img className='w-full rounded-3xl  object-contain' src="//shadesbyerickuster.com/cdn/shop/files/eric_pro.jpg?v=1715076859" alt="standing man" />
+
+
+
+            {/* phone k lie  */}
+            <br />
+            <div className='md:hidden lg:hidden'>
+              <em>Al meer dan twee decennia definieer ik, Eric Kuster, wat 'Metropolitan Luxury' in interieurdesign betekent. SHADES by Eric Kuster vertegenwoordigt deze visie, vertaald naar een exclusieve lijn van hoogwaardige verfproducten. Ons zorgvuldig geselecteerde palet, geïnspireerd door natuur en diverse culturen, heeft zijn stempel gedrukt op interieurs wereldwijd, en staat als toonbeeld van tijdloze elegantie, warmte en luxe.</em>
+              <br /><br />
+              <em>Samen met mijn toegewijde team streven we ernaar om je niet alleen prachtige tinten te bieden, maar ook een unieke beleving in interieurdesign. Met de introductie van onze webshop brengen we de beste kwaliteit en vakmanschap direct naar je toe. Ontdek en omarm de wereld van SHADES by Eric Kuster en ervaar zelf de transformatie die onze producten kunnen bieden.</em>
+            </div>
+
+            <div>
+              <img src="//shadesbyerickuster.com/cdn/shop/files/handtekening_zwart_sign.png?v=1715254092" alt=""
+                className='h-14 object-contain md:hidden'
+              />
+            </div>
           </div>
 
-          <div className='w-1/2 bg-white rounded-3xl p-7 m-8'>
+
+
+
+
+          <div className='w-1/2 bg-white rounded-3xl p-7 m-8 hidden md:block'>
             <div className=''>
 
               <video className="w-full rounded-xl" autoPlay muted loop>
@@ -573,7 +596,7 @@ function Home() {
 
       {/* CARD 2 //4 door */}
 
-      <div className='w-full bg-white px-14 py-9'>
+      <div className='w-full bg-white px-5 md:px-14 lg:px-14 py-9'>
         <div>
           <h2 className='text-black text-2xl md:text-3xl  font-serif p-3'>Ervaringen van klanten</h2>
         </div>
@@ -617,54 +640,145 @@ function Home() {
         </div>
 
         {/* REVIEW CARD */}
-        <div className='h-full  w-screen '>
-          <div className='flex overflow-hidden '>
-            {cards.map((item, index) => (
-              <div
-                key={index}
-                className={`flex-shrink-0 transition-transform my-2`} 
-                style={{
-                  transform: `translateX(-${currentReviewIndex * 100}%)`,
-                }}
-              >
-                <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w1/2 lg:w-1/2'  > {/* Adjusted padding here */}
-                  <div className='flex justify-between'>
-                    <span className="flex gap-1">
-                      <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
-                      <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
-                      <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
-                      <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
-                      <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
-                    </span>
-                    <span className='font-serif text-lg text-white'>Geverifieerd</span>
-                  </div>
-                  <div>
-                    <p className='p-2 font-serif text-white'> {/* Adjusted padding here */}
-                      Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
-                    </p>
-                  </div>
-                  <div>
-                    <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
-                  </div>
+        <div className='h-full'>
+          <div className='flex overflow-x-hidden'>
+            {/* First Card */}
+            <div className={`overflow-x-hidden flex-shrink-0 transition-transform my-2`} style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}>
+              <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w-1/2 lg:w-1/2'>
+                <div className='flex justify-between'>
+                  <span className="flex gap-1">
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                  </span>
+                  <span className='font-serif text-lg text-white'>Geverifieerd</span>
+                </div>
+                <div>
+                  <p className='p-2 font-serif text-white'>
+                    Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
+                  </p>
+                </div>
+                <div>
+                  <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Second Card */}
+            <div className={`overflow-x-hidden flex-shrink-0 transition-transform my-2`} style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}>
+              <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w-1/2 lg:w-1/2'>
+                <div className='flex justify-between'>
+                  <span className="flex gap-1">
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                  </span>
+                  <span className='font-serif text-lg text-white'>Geverifieerd 2</span>
+                </div>
+                <div>
+                  <p className='p-2 font-serif text-white'>
+                    Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
+                  </p>
+                </div>
+                <div>
+                  <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Third Card */}
+            <div className={`overflow-x-hidden flex-shrink-0 transition-transform my-2`} style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}>
+              <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w-1/2 lg:w-1/2'>
+                <div className='flex justify-between'>
+                  <span className="flex gap-1">
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                  </span>
+                  <span className='font-serif text-lg text-white'>Geverifieerd 3</span>
+                </div>
+                <div>
+                  <p className='p-2 font-serif text-white'>
+                    Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
+                  </p>
+                </div>
+                <div>
+                  <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Fourth Card */}
+            <div className={`overflow-x-hidden flex-shrink-0 transition-transform my-2`} style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}>
+              <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w-1/2 lg:w-1/2'>
+                <div className='flex justify-between'>
+                  <span className="flex gap-1">
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                  </span>
+                  <span className='font-serif text-lg text-white'>Geverifieerd 4</span>
+                </div>
+                <div>
+                  <p className='p-2 font-serif text-white'>
+                    Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
+                  </p>
+                </div>
+                <div>
+                  <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Fifth Card */}
+            <div className={`overflow-x-hidden flex-shrink-0 transition-transform my-2`} style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}>
+              <div className='bg-[#625d52] border-1 border-white p-4 mt-5 rounded-3xl w-1/3 md:w-1/2 lg:w-1/2'>
+                <div className='flex justify-between'>
+                  <span className="flex gap-1">
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                    <StarIcon className='h-5 w-5 fill-[#625d52] text-white' />
+                  </span>
+                  <span className='font-serif text-lg text-white'>Geverifieerd 5</span>
+                </div>
+                <div>
+                  <p className='p-2 font-serif text-white'>
+                    Snelle levering. Ik kon zelfs kiezen wanneer ik het afgeleverd wilde hebben. Zeer stevige verpakking. En uiteraard een geweldig mooie kleur!!
+                  </p>
+                </div>
+                <div>
+                  <p className='flex justify-center text-xl font-semibold text-white'>Rob Canton</p>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div className='flex justify-around'>
             <button
               onClick={handleReviewPrev}
-              className="transform bg-gray-700 text-white px-2 py-1 rounded-md"
+              className="transform bg-[#625d52] text-white px-2 py-1 rounded-md"
             >
               <ArrowBigLeftDashIcon />
             </button>
             <button
               onClick={handleReviewNext}
-              className="transform bg-gray-700 text-white px-2 py-1 rounded-md"
+              className="transform bg-[#625d52]  text-white px-2 py-1 rounded-md"
             >
               <ArrowBigRightDashIcon />
             </button>
           </div>
         </div>
+
 
 
       </div>
@@ -673,12 +787,12 @@ function Home() {
 
       {/* Two Pictures  */}
 
-      <div className='bg-[#ebe9e7] w-full h-full pb-10'>
+      <div className='bg-[#ebe9e7] w-full h-full pb-10 pt-10 md:pt-0'>
         <div className='pt-3'>
           <h2 className='text-black text-center font-serif text-4xl '>Ontdek alle merken</h2>
         </div>
 
-        <div className='flex flex-col md:flex-col lg:flex-row px-14 gap-3 mt-6'>
+        <div className='flex flex-col md:flex-col lg:flex-row px-5 md:px-14 lg:px-14 gap-3 mt-6'>
           <div>
             <img src="//shadesbyerickuster.com/cdn/shop/files/pearls_1.jpg?v=1715248937" alt=""
               className='rounded-2xl'
@@ -727,45 +841,7 @@ function Home() {
 
       {/* newsletter */}
 
-      {/* <div className='w-full bg-[#ebe9e7] h-screen'>
-
-        <div className="flex justify-end items-center h-full px-14 relative ">
-
-          <div className='absolute z-30  flex justify-center '>
-            <div className='bg-[#c6b8a9] h-44 w-96 rounded-2xl'>
-              <div className='flex justify-between p-3'>
-                <p className='text-black'> Meld je aan en ontvang 5% korting</p>
-                <button className='bg-[#ebe9e7] text-black rounded-md p-1'>  Inspiratie</button>
-              </div>
-              <hr />
-              <div className='p-2'>
-                <label className='text-black' htmlFor="Email">Email</label>
-                <br />
-                <div className='p-1 flex justify-between'>
-                  <input type="text" name="" placeholder='email' id=""
-                    className='w-full p-2 rounded-2xl'
-                  />
-                  <button className=" bg-[#625d52] text-white py-2 px-4 rounded-xl hover:bg-[#49453f]">
-                    parmanshu
-                  </button>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-          <div className="w-80 h-80 flex items-center justify-center">
-            <img
-              src="//shadesbyerickuster.com/cdn/shop/files/Kopie_van__DSC0647-instagram.jpg?v=1715242652&width=1024"
-              alt=""
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-
-        </div>
-      </div> */}
+  
 
       <div className='w-full bg-[#ebe9e7] h-80 md:h-screen'>
         <div className="flex justify-end items-center h-full px-14 relative">
@@ -793,7 +869,7 @@ function Home() {
           </div>
 
 
-          <div className="w-96 h-96  items-center justify-center hidden md:block">
+          <div className="w-96 h-96   items-center justify-start hidden md:block">
             <img
               src="//shadesbyerickuster.com/cdn/shop/files/Kopie_van__DSC0647-instagram.jpg?v=1715242652&width=1024"
               alt=""
@@ -809,3 +885,72 @@ function Home() {
 }
 
 export default Home;
+
+
+
+
+
+
+
+const MobileIconContext = () => {
+  const [scrollIndex, setScrollIndex] = useState(0);
+  const icons = [
+    {
+      src: "https://shadesbyerickuster.com/cdn/shop/files/Gemaakt_met_liefde.png?v=1700136676",
+      text: "Gemaakt met liefde"
+    },
+    {
+      src: "https://shadesbyerickuster.com/cdn/shop/files/rating.png?v=1709017199",
+      text: "4.8 | 1000+ Reviews"
+    },
+    {
+      src: "https://shadesbyerickuster.com/cdn/shop/files/Next_day_delivery.png?v=1699013624",
+      text: "Volgende dag geleverd"
+    },
+    {
+      src: "https://shadesbyerickuster.com/cdn/shop/files/6a._kwast.png?v=1699208681",
+      text: "Kleur perfectie"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScrollIndex(prevIndex => (prevIndex + 1) % icons.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [icons.length]);
+
+  return (
+    <div className="w-full py-6 md:hidden flex justify-start text-center items-center bg-[#e3dfda] overflow-hidden relative">
+      <div className="flex flex-row items-center transition-transform  duration-1000">
+        {icons.map((icon, index) => (
+          <div
+            key={index}
+            className={`flex flex-row  items-center space-x-2 transition-opacity text-center ml-24 bg-[#e3dfda] w-full duration-1000 ${index === scrollIndex ? 'opacity-100' : 'opacity-0'}`}
+            style={{
+
+              transition: 'opacity 1s ease-in-out',
+              width: '100%',
+              position: 'absolute'
+            }}
+          >
+            <img
+              src={icon.src}
+              alt={`Icon ${index + 1}`}
+              className="w-10 h-10 mb-2 object-contain"
+            />
+            <span className="text-gray-700 text-sm">{icon.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
+
+
